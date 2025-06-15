@@ -195,7 +195,7 @@ void moverJugador(char tecla)
 
 int main()
 {
-    if (!cargarMapaDesdeArchivo("mapa.txt", mapa))
+    if (!cargarMapaDesdeArchivo("mapa.txt", mapa)) //llamado de mapa.h
     {
         return 1; // en dado caso no se cargue el mapa
     }
