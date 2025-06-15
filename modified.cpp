@@ -6,6 +6,7 @@
 #include <iomanip> //para limpiar lineas
 #include "cursor.h"
 #include "mapa.h"
+#include "dialogo.h" //esto es para los cuadros de texto
 
 using namespace std;
 
@@ -18,26 +19,6 @@ const int cofreX2[3] = {20, 21, 22};
 const int cofreY[2] = {1, 1};
 
 void moverCursor();
-
-void dibujarDialogo(const string &texto, int offsetY = 1)
-{
-    int ancho = texto.length() + 4; // la longitud del texto
-    int startX = (WIDTH - ancho) / 2;
-    int startY = offsetY;
-
-    moverCursor(startX, startY);
-    cout << char(201);
-    for (int i = 0; i < ancho - 2; i++)
-        cout << char(205);
-    cout << char(187);
-    moverCursor(startX, startY + 1);
-    cout << char(186) << " " << texto << " " << char(186);
-    moverCursor(startX, startY + 2);
-    cout << char(200);
-    for (int i = 0; i < ancho - 2; i++)
-        cout << char(205);
-    cout << char(188);
-}
 
 void limpiar() // limpiar las lineas
 {
@@ -193,7 +174,7 @@ void moverJugador(char tecla)
 
     char lugar = mapa[nuevoY][nuevoX];
 
-    if (lugar == '#' || lugar == '|') //colisiones de pared
+    if (lugar == '#' || lugar == '|') // colisiones de pared
     {
         return;
     }
